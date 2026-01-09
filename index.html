@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <title>Список дел</title>
+</head>
+
+<body class="bg-light">
+  <div class="container py-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+
+        <h4 class="text-center mb-3">Список дел</h4>
+
+        <form id="ToDoForm" class="d-flex gap-2 mb-3">
+          <input
+            type="text"
+            name="toDo"
+            class="form-control"
+            placeholder="Что нужно сделать?"
+          />
+          <button class="btn btn-primary">+</button>
+        </form>
+
+        <div class="d-flex justify-content-between mb-2">
+          <button id="sortBtn" class="btn btn-sm btn-outline-secondary">
+            Сортировка
+          </button>
+        </div>
+
+        <div id="toDoList"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
