@@ -1,9 +1,9 @@
 {
   "name": "ToDo List",
   "short_name": "ToDo",
-  "id": "/todo-pwa/",
-  "start_url": "./todo-pwa/",
-  "scope": "./todo-pwa/",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0d6efd",
