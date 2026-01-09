@@ -6,7 +6,6 @@ const ASSETS = [
   "./styles/bootstrap.min.css",
   "./styles/app.css",
   "./assets/icons/icon-192.png",
-  "./assets/icons/icon-256.png",
   "./assets/icons/icon-512.png"
 ];
 
