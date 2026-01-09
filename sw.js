@@ -1,12 +1,12 @@
 const CACHE_NAME = "todo-v1";
 const ASSETS = [
-  "./index.html",
-  "./app.js",
-  "./manifest.json",
-  "./styles/bootstrap.min.css",
-  "./styles/app.css",
-  "./assets/icons/icon-192.png",
-  "./assets/icons/icon-512.png"
+  "/todo-pwa/index.html",
+  "/todo-pwa/app.js",
+  "/todo-pwa/manifest.json",
+  "/todo-pwa/styles/bootstrap.min.css",
+  "/todo-pwa/styles/app.css",
+  "/todo-pwa/assets/icons/icon-192.png",
+  "/todo-pwa/assets/icons/icon-512.png"
 ];
 
 self.addEventListener("install", event => {
