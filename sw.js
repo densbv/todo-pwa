@@ -1,6 +1,5 @@
-const CACHE_NAME = "todo-cache-v2";
+const CACHE_NAME = "todo-v1";
 const ASSETS = [
-  "./",
   "./index.html",
   "./app.js",
   "./manifest.json",
