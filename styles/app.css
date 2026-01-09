@@ -1,0 +1,7 @@
+.todo-item {
+  transition: background 0.2s ease;
+}
+
+.todo-item:hover {
+  background: #f8f9fa;
+}
