@@ -1,4 +1,4 @@
-const CACHE_NAME = "todo-v1";
+const CACHE_NAME = "todo-pwa-v2";
 const ASSETS = [
   "/todo-pwa/index.html",
   "/todo-pwa/app.js",
@@ -31,8 +31,7 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      return cached || fetch(event.request);
-    })
+    caches.match(event.request)
   );
 });
+
