@@ -7,6 +7,7 @@ let view = "lists"; // "lists" | "list"
 let itemSortMode = "new"; // "new" | "old"
 
 // ===== Init =====
+migrateV1toV2();
 init();
 
 function init() {
@@ -246,6 +247,32 @@ function toggleItemSort() {
     itemSortMode = itemSortMode === "new" ? "old" : "new";
     render();
 }
+
+function migrateV1toV2() {
+  const oldData = JSON.parse(localStorage.getItem("toDoList"));
+  const newData = JSON.parse(localStorage.getItem("todoLists"));
+
+  if (oldData && Array.isArray(oldData) && !newData) {
+    const now = Date.now();
+
+    const migratedList = {
+      id: now,
+      title: "Мой список",
+      createdAt: now,
+      items: oldData.map(item => ({
+        id: item.id || Date.now(),
+        text: item.text,
+        done: item.check === 1
+      }))
+    };
+
+    localStorage.setItem("todoLists", JSON.stringify([migratedList]));
+    localStorage.removeItem("toDoList");
+
+    console.log("✅ Данные v1 успешно мигрированы в v2");
+  }
+}
+
 
 
 
