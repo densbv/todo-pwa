@@ -58,7 +58,7 @@ function renderListsScreen() {
       ➕ Новый список
     </button>
 
-    <div class="list-group mb-3">
+    <div class="list-group my-3">
       ${lists.map(list => `
         <div class="list-group-item d-flex justify-content-between align-items-center" onclick="openList(${list.id})" style="cursor:pointer">
             <div>
