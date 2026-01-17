@@ -1,3 +1,33 @@
+migrateV1toV2();
+
+function migrateV1toV2() {
+  const oldList = JSON.parse(localStorage.getItem("toDoList"));
+  const newLists = JSON.parse(localStorage.getItem("todoLists"));
+
+  // если:
+  // - есть старые данные
+  // - и нет новых
+  if (oldList && Array.isArray(oldList) && (!newLists || newLists.length === 0)) {
+    const now = Date.now();
+
+    const migratedList = {
+      id: now,
+      title: "Импортированный список",
+      createdAt: now,
+      items: oldList.map(item => ({
+        id: item.id,
+        text: item.text,
+        done: Boolean(item.check)
+      }))
+    };
+
+    localStorage.setItem("todoLists", JSON.stringify([migratedList]));
+    localStorage.removeItem("toDoList");
+
+    console.log("✅ Migration v1 → v2 completed");
+  }
+}
+
 const app = document.getElementById("app");
 
 // ===== State =====
@@ -7,7 +37,6 @@ let view = "lists"; // "lists" | "list"
 let itemSortMode = "new"; // "new" | "old"
 
 // ===== Init =====
-migrateV1toV2();
 init();
 
 function init() {
@@ -79,7 +108,7 @@ function renderListsScreen() {
     
 
     <div class="text-center text-muted mt-4 small">
-      📱 Den · ToDo · PWA
+      📱 Den · ToDo · PWA v2
     </div>
   `;
 }
@@ -135,7 +164,7 @@ function renderListScreen() {
     <div id="items"></div>
 
     <div class="text-center text-muted mt-4 small">
-      📱 Den · ToDo · PWA
+      📱 Den · ToDo · PWA v2
     </div>
   `;
 
@@ -246,31 +275,6 @@ function deleteListFromOverview(id, e) {
 function toggleItemSort() {
     itemSortMode = itemSortMode === "new" ? "old" : "new";
     render();
-}
-
-function migrateV1toV2() {
-  const oldData = JSON.parse(localStorage.getItem("toDoList"));
-  const newData = JSON.parse(localStorage.getItem("todoLists"));
-
-  if (oldData && Array.isArray(oldData) && !newData) {
-    const now = Date.now();
-
-    const migratedList = {
-      id: now,
-      title: "Мой список",
-      createdAt: now,
-      items: oldData.map(item => ({
-        id: item.id || Date.now(),
-        text: item.text,
-        done: item.check === 1
-      }))
-    };
-
-    localStorage.setItem("todoLists", JSON.stringify([migratedList]));
-    localStorage.removeItem("toDoList");
-
-    console.log("✅ Данные v1 успешно мигрированы в v2");
-  }
 }
 
 
